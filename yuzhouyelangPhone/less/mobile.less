@@ -1,0 +1,501 @@
+// @import './rem.less';
+/*top导航开始*/
+.top-nav{
+	position: fixed;
+	top:0;
+	left: 0;
+	padding-top:10/32rem;
+	padding-bottom: 10/32rem;
+	width: 100%;
+	max-width: 768px;
+	background-color:blue;
+	z-index: 1;
+	.top-search{
+		float: left;
+		width: 30/32rem;
+		height: 30/32rem;
+		background-color: red;
+		p{
+			text-align: center;
+			font-size: 18/32rem;
+		}
+	}
+	.top-sort{
+		float: right;
+		width: 30/32rem;
+		height: 30/32rem;
+		background-color: red;
+		p{
+			font-size: 18/32rem;
+			text-align: center;
+		}
+	}
+	.top-logo{
+		position: absolute;
+		width: 60/32rem;
+		top:50%;
+		left: 50%;
+		transform: translate(-120%,-50%);
+		img{
+			width: 100%;
+			float: left;
+		}
+	}
+	.company{
+		position: absolute;
+		top:50%;
+		left: 50%;
+		transform: translate(-10%,-50%);
+		
+		a{
+			font-size: 20/32rem;
+			color: #0195dd;
+			font-weight: bolder;
+		}
+	}
+
+}
+/* 搜索开始*/ 
+.search-input{
+	position:fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	height:50/32rem;
+	z-index: 2;
+	display: none;
+	box-sizing: border-box;
+	background-color: #ccc;
+	padding: 0 10/32rem;
+	padding-top:10/32rem;
+	padding-bottom: 10/32rem;
+	.search-flase{
+		float: left;
+		position: relative;
+		width: 30/32rem;
+		height: 30/32rem;
+		background-color: yellow;
+		p{
+			position: absolute;
+			font-size: 12/32rem;
+			top:50%;
+			left: 0%;
+			transform: translate(0,-50%);
+		}
+	}
+	.search{
+		position: relative;
+		float: left;
+		margin-left:10/32rem;
+		
+		input{
+			float: left;
+			width: 260/32rem;
+			height: 30/32rem;
+			border:1px solid black;
+			box-sizing: border-box;
+			border-radius:15/32rem 15/32rem;
+		}
+		.search-iconfont{
+			position: absolute;
+			top:50%;
+		    right: 0%;
+			transform: translate(0,-50%);
+			width: 30/32rem;
+			height: 30/32rem;
+			margin-right: 20/32rem;
+			background-color: yellow;
+			p{
+				position: absolute;
+				font-size: 12/32rem;
+				top:50%;
+				right: 0%;
+				transform: translate(0,-50%);
+			}
+
+		}
+	}
+}
+/*搜索结束*/
+/*top伸缩菜单开始*/
+.flexible{
+	position:fixed;
+	display: none;
+	width: 100%;
+	height: 100vh;
+	top:0;
+	right: 0;
+	z-index: 999;
+	.flexible-right{
+		display: none;
+		position: absolute;
+		top:0;
+		right: 0;
+		width: 220/32rem;
+		height: 100vh;
+		background-color: #ccc;
+		ul{
+			li{
+				text-align: center;
+				a{
+					display: block;
+					height: 50/32rem;
+					line-height: 50/32rem;
+					border-bottom: 1px solid red;
+					box-sizing: border-box;
+					font-size: 16/32rem;
+				}
+			}
+		}
+	}
+	.flexible-left{
+		display: none;
+		position: absolute;
+		top:0;
+		left:0;
+		width: 100/32rem;
+		height: 100vh;
+		background-color: black;
+		opacity: 0.8;
+		ul{
+			li{
+				text-align: right;
+				a{
+					display: block;
+					height: 50/32rem;
+					line-height: 50/32rem;
+					box-sizing: border-box;
+					font-size: 16/32rem;
+				}
+			}
+		}
+	}
+}
+/*top伸缩菜单结束*/
+
+/*top导航开始*/
+
+/*轮播图开始*/
+.carousel{
+	position: relative;
+	width: 300/32rem;
+	margin: 50/32rem auto;
+	margin-bottom: 0;
+	border-top: 1px solid #fff;
+	overflow: hidden;
+	box-sizing: border-box;
+	background-color: pink;
+	height: 141/32rem;
+	ul{
+		width: 600/32rem;
+		li{
+			float: left;
+			width: 300/32rem;
+			img{
+				width: 100%;
+			}
+		}
+	}
+	.carousel-btn{
+		position: absolute;
+		bottom: 8/32rem;
+		left: 50%;
+		// width: 50/32rem;
+		// height: 50/32rem;
+		background-color: pink;
+		padding: 10/32rem;
+		z-index: 666;
+		transform: translate(-50%,0);
+		.btn{
+			float: left;
+			width: 15/32rem;
+			height: 5/32rem;
+			background-color: #fff;
+			margin-right:5/32rem;
+			margin-left:5/32rem;
+		}
+	}
+}
+/*轮播图结束*/
+
+/*头部导航开始*/
+.header-nav{
+		width: 100%;
+		padding: 0 10/32rem;
+        box-sizing: border-box;
+	ul{
+		background-color: #034eb3;
+		li{
+			position: relative;
+			float: left;
+			// width: 74/32rem;
+			// height: 40/32rem;
+			padding: 0 3/32rem;
+			box-sizing: border-box;
+			text-align: center;
+			div{
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 1px;
+				height: 35/32rem;
+				background-color: #979797;
+			}
+			a{
+				display: block;
+				width: 69/32rem;
+				font-size: 16/32rem;
+				color: #fff;
+				line-height: 40/32rem;
+				box-sizing: border-box;
+				border-bottom:2px solid #979797;
+			}
+			
+		}
+		li:nth-child(5){
+			a{
+				border-bottom:none;
+			}
+		}
+		li:nth-child(6){
+			a{
+				border-bottom:none;
+			}
+		}
+		li:nth-child(7){
+			a{
+				border-bottom:none;
+			}
+		}
+		li:nth-child(8){
+			a{
+				border-bottom:none;
+			}
+		}
+	}
+}
+/*头部导航结束*/
+/*产品展示开始*/
+.product{
+	text-align: center;
+	margin-top: 10/32rem;
+	h2{
+		font-size: 20/32rem;
+		color:#005ac1; 
+	}
+	h3{
+		font-size: 16/32rem;
+		color: #000000;
+	}
+	.product-line{
+		height: 1px ;
+		background-color: #ccc;
+		margin-top: 10/32rem;
+		margin-bottom: 10/32rem;
+	}
+	.product-list{
+		.product-item{
+			width: 145/32rem;
+			height: 112/32rem;
+			border:2px solid #ccc;
+			overflow: hidden;
+			box-sizing: border-box;
+			a{
+				display: block;
+				width:145/32rem; 
+				font-size: 16/32rem;
+				img{
+					width:145/32rem; 
+				}
+			}
+		}
+		.product-item-left{
+			float:left;
+		}
+		.product-item-right{
+			float: right;
+		}
+	}
+	.product-item-name{
+		.product-name{
+			position: relative;
+			text-align: center;
+			width: 145/32rem;
+			line-height: 40/32rem;
+			font-size: 16/32rem;
+		}
+		.product-name-left{
+			float: left;
+		}
+		.product-name-right{
+			float: right;
+		}
+		.product-radius{
+			position: absolute;
+			top: 50%;
+			right: 0;
+            transform: translate(0,-50%);
+			width: 18/32rem;
+			height: 18/32rem;
+			border-radius: 50%;
+			background-color:#9f9f9f;
+			i{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				font-size: 12/32rem;
+
+			}
+		}
+	}
+}
+/*产品展示结束*/
+
+/* 我们的优势开始*/
+.adgantages{
+	text-align: center;
+	margin-top: 10/32rem;
+	h2{
+		font-size: 20/32rem;
+		color:#005ac1; 
+	}
+	h3{
+		font-size: 16/32rem;
+		color: #000000;
+	}
+	.adgantages-line{
+		height: 1px ;
+		background-color: #ccc;
+		margin-top: 10/32rem;
+		margin-bottom: 10/32rem;
+	}
+	.adgantages-content{
+		position: relative;
+		height: 100/32rem;
+		.adgantages-radius{
+			position: absolute;
+			top:50%;
+			left: 0;
+			transform: translate(0,-50%);
+			width: 40/32rem;
+			height: 40/32rem;
+			background-color: #034eb3;
+			font-size: 20/32rem;
+			font-weight: bolder;
+			border-radius: 50%;
+			// margin-right: 15/32rem;
+
+			p{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				color:#fff;
+			}
+		}
+		.adgantages-content-item{
+			position: absolute;
+			top:50%;
+			right: 0;
+			transform: translate(0,-50%);
+			width: 245/32rem;
+			text-align: left;
+			font-size: 16/32rem;
+			// background-color: red;
+			h2{
+				color: #333;
+			}
+			p{
+				font-size: 14/32rem;
+				color: #666;
+			}
+		}
+	}
+}
+/*我们的优势结束*/
+
+/* 新闻资讯开始*/
+.new{
+	text-align: center;
+	margin-top: 10/32rem;
+	h2{
+		font-size: 20/32rem;
+		color:#005ac1; 
+	}
+	h3{
+		font-size: 16/32rem;
+		color: #000000;
+	}
+	.new-line{
+		height: 1px ;
+		background-color: #ccc;
+		margin-top: 10/32rem;
+		margin-bottom: 10/32rem;
+	}
+	.adgantages-content{
+		position: relative;
+		height: 85/32rem;
+		border-bottom: 1px dashed #888;
+		.adgantages-radius{
+			position: absolute;
+			bottom: 4/32rem;
+			left: 0;
+			width: 60/32rem;
+			height: 60/32rem;
+			background-color: #034eb3;
+			font-size: 20/32rem;
+			font-weight: bolder;
+			// border-radius: 50%;
+			// margin-right: 15/32rem;
+
+			p{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				color:#fff;
+			}
+		}
+		.adgantages-content-item{
+			position: absolute;
+			bottom: 4/32rem;
+			right: 0;
+			width: 225/32rem;
+			text-align: left;
+			// background-color: red;
+			h2{
+				font-size: 16/32rem;
+				color: black;
+			}
+			p{
+				font-size: 14/32rem;
+				color: #666;
+			}
+			span{
+				font-size: 14/32rem;
+				color: #666;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+		}
+	}
+}
+/*新闻资讯结束*/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/

@@ -1,0 +1,138 @@
+1....document.location和window.location是同一个对象,代表当前页面的相关信息对象,可以读取和赋值
+
+2....window.location.href 属性代表当前页面的完整url
+
+3..... location的其他属性{
+	....host 服务器名称和端口号
+	....hostname 服务器名称
+	....pathname 地址中的路径部分
+	....port 端口号
+	....search 查询字符串,指?后面的字符串
+
+}
+
+4....window.open(){
+	.....window.open(地址,打开方式);
+		.....地址的取值{
+			完整的url
+			本地页面
+			"about:blank",表示空白页面
+		}
+		.....打开方式取值{
+			"_blank",空白页面打开,默认值
+			"_self",当前窗口打开
+		}
+}
+
+5....窗口位置{
+	(下面代码指的是整个浏览器包含浏览器工具栏，滚动条)
+	....window.screenLeft/window.screenTop 窗口相对于屏幕左边/顶部的距离(IE Chrome Safari Opera)
+	....window.screenX/window.screenY  窗口相对于屏幕左边/顶部的距离(FireFox)
+}
+
+6....窗口大小{
+	
+	....浏览器视口宽高(不包含浏览器的边框,边框指的是浏览器工具栏，如果有滚动条则包括){
+		....window.innerHeight指的是视口的高，不包含搜索栏
+		....window.innerWidth指的是视口的宽，不包含浏览器边框
+
+		什么是视口？视口在这里是指body
+
+		(
+			下面这句话不知道对不对，当html什么都没有的时候这两值是一样的，其他情况没测过
+
+			注意：'兼容所有浏览器获取当前屏幕的宽度'——>{
+				document.body.clientWidth || document.documentElement.clientWidth
+				他的值和window.innerWidth一样
+			}
+		)
+
+	}
+	....浏览器窗口整个自身的宽高(包含浏览器边框){
+		....window.outerWidth
+		....window.outerHeight
+		整个浏览器的宽高，会随着浏览器的缩小放大改变
+	}
+
+}
+
+
+7....offset相关值{
+	....offsetLeft,元素的左外边框和参考父元素左内边框的距离
+	....offsetTop,元素的上外边框和参考父元素上内边框的距离
+	....offsetWidth,元素的宽(水平方向上边框+水平方向上内边距+内容宽+垂直滚动条)
+	....offsetHeight,元素的高(垂直方向上边框+垂直方向上内边距+内容高+水平滚动条)
+}
+
+
+offset相关值和client相关值都是只读属性
+offset相关值和client相关值每次访问都会从新计算
+offset相关值和client相关值都是获取计算后的值
+
+
+8....client相关值{
+	....clientWidth,元素的客户区宽(水平方向上内边距+内容宽),不包括滚动条
+	....clientHeight,元素的客户区高(垂直方向上内边距+内容高),不包括滚动条
+}
+
+9....确定浏览器视口宽高(不包括滚动条){
+	....标准模式用document.documentElement.clientWidth/clientHeight
+	....混杂模式用 document.body.clientWidth/clientHeight
+
+
+		var w =0,h=0;
+	if(document.compatMode == 'CSS1Compat'){
+		w = document.documentElement.clientWidth;
+		h = document.documentElement.clientHeight;
+	}else{
+		w = document.body.clientWidth;
+}
+
+
+10....scroll相关值{
+	....scrollLeft,读写属性,表示隐藏在内容区域左侧的宽度,一般指水平滚动距离
+	....scrollTop,读写属性,表示隐藏在内容区域上侧的高度,一般指垂直滚动距离
+	....scrollWidth,只读属性,表示元素内容的宽度,包括由于滚动而未显示在屏幕中内容
+	....scrollHeight,只读属性,表示元素内容的高度,包括由于滚动而未显示在屏幕中内容
+}
+
+11....确定页面的水平／垂直滚动距离{
+	....scrollLeft/scrollTop 通常用来确定页面的水平／垂直滚动距离,但需要注意兼容问题,其中scrollTop是最常用的一个属性
+
+	....标准模式用document.documentElement.scrollLeft/scrollTop
+	....混杂模式用 document.body.scrollLeft/scrollTop
+    ....IE9以上和高级浏览器可以用window.pageXOffset/window.pageYOffset
+
+
+    
+
+    var l = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;		
+	var t = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+}
+
+
+12.... calc()的使用(目前不清楚，不过感觉很方便，是需要好好看看的)
+
+13....关于vw 、vh、vmin 、vmax的兼容性
+	....vmin：当前 vw 和 vh 中较小的一个值
+	....vmax：当前 vw 和 vh 中较大的一个值
+	2、vw、vh与%百分比的区别
+	（1）% 是相对于父元素的大小设定的比率，vw、vh 是视窗大小决定的。
+	（2）vw、vh 优势在于能够直接获取高度，而用 % 在没有设置 body 高度的情况下，是无法正确获得可视区域的高度的，所以这是挺不错的优势。
+	3、vmin、vmax用处
+	做移动页面开发时，如果使用 vw、wh 设置字体大小（比如 5vw），在竖屏和横屏状态下显示的字体大小是不一样的。
+	由于 vmin 和 vmax 是当前较小的 vw 和 vh 和当前较大的 vw 和 vh。这里就可以用到 vmin 和 vmax。使得文字大小在横竖屏下保持一致。
+
+	（1）桌面 PC
+	Chrome：自 26 版起就完美支持（2013年2月）
+	Firefox：自 19 版起就完美支持（2013年1月）
+	Safari：自 6.1 版起就完美支持（2013年10月）
+	Opera：自 15 版起就完美支持（2013年7月）
+	IE：自 IE10 起（包括 Edge）到现在还只是部分支持（不支持 vmax，同时 vm 代替 vmin）
+
+	（2）移动设备
+	Android：自 4.4 版起就完美支持（2013年12月）
+	iOS：自 iOS8 版起就完美支持（2014年9月）
+	原文链接：https://blog.csdn.net/romantic_love/article/details/80868909
+
+
