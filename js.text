@@ -81,12 +81,22 @@ offset相关值和client相关值都是获取计算后的值
 
 
 		var w =0,h=0;
-	if(document.compatMode == 'CSS1Compat'){
+....if(document.compatMode == 'CSS1Compat'){
 		w = document.documentElement.clientWidth;
 		h = document.documentElement.clientHeight;
 	}else{
 		w = document.body.clientWidth;
-}
+	} 
+
+....if(document.compatMode == "CSS1Compat") {
+
+			    console.log("标准模式");
+
+			}else {
+
+		    console.log("混杂模式");
+
+			}
 
 
 10....scroll相关值{
@@ -135,4 +145,133 @@ offset相关值和client相关值都是获取计算后的值
 	iOS：自 iOS8 版起就完美支持（2014年9月）
 	原文链接：https://blog.csdn.net/romantic_love/article/details/80868909
 
+14....移动端网站设置根元素的js代码
 
+;(function(win,doc){
+    //获取根元素
+    var root = doc.getElementsByTagName('html')[0];
+
+    function refresh(){
+        // console.log('aa')
+        //获取视口的宽度
+        // var width = doc.body.clientWidth || doc.documentElement.clientWidth
+        var width =  doc.documentElement.clientWidth
+        var fontSize = width / 10 + 'px'
+
+        root.style.fontSize = fontSize        
+    }
+    //页面加载刷新
+    //win.addEventListener('DOMContentLoaded',refresh,false)
+    refresh();
+    //页面大小发生变化
+    win.addEventListener('resize',refresh,false);
+
+})(window,document)
+
+15....exports和module.exports的区别？
+
+
+
+16...--save-dev是本地安装， 依赖会加在package.json的devDependencies中,一般是辅助开发的依赖,不会打包上线的 
+  ...--save:把包的版本信息添加到package.json中dependencies 中(默认),一般是需要最终需要打包到业务代码中的依赖
+
+17....图片从网上拉下来就是它原来做网页时的用的图片大小
+
+18....webpack.config.js出口中尽量用绝对路径，如：path: path.resolve(__dirname, 'dist')
+在出口filename: '[name]-[chunkhash]-bundle.js',意思是每次打包name后面的chunkhash值不同。
+        filename: '[name]-[hash]-bundle.js',hash后面的数字相同。
+  webpack没有打包是文件是存放在磁盘中的，经过打包将文件放到内存中，这样可以提高打包速度
+
+
+18......{
+	   plugins: [// 配置插件的节点
+		   new htmlWebpackPlugin({ // 创建一个 在内存中 生成 HTML  页面的插件
+		      template: path.join(__dirname, './src/index.html'), // 指定 模板页面，将来会根据指定的页面路径，去生成内存中的 页面
+		      filename: 'index.html' // 指定生成的页面的名称
+		    })
+	   ]
+	   // 这个插件的两个作用：
+	   //  1. 自动在内存中根据指定页面生成一个内存的页面
+	   //  2. 自动，把打包好的 bundle.js 追加到页面中去（不用再在页面手动引用）
+   }
+   { test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader?limit=7631&name=[hash:8]-[name].[ext]' },name属性可以不要，如果想要name属性，最好按照现在的写法复制，hash值不能超过32，要name的作用是打包过后的图片和打包之前的名称一样。
+18....npm 相关问题
+	npm install module_name -S    即    npm install module_name --save    写入dependencies
+
+	npm install module_name -D    即    npm install module_name --save-dev 写入devDependencies
+
+	npm install module_name -g 全局安装(命令行使用)
+
+	npm install module_name 本地安装(将安装包放在 ./node_modules 下)
+
+
+
+
+19....stringObject.substring(start,stop)：start 必需。一个非负的整数，规定要提取的子串的第一个字符在 stringObject 中的位置。
+stop  可选。一个非负的整数，比要提取的子串的最后一个字符在 stringObject 中的位置多 1。如果省略该参数，那么返回的子串会一直到字符串的结尾。
+
+
+
+
+
+
+alert(document.body.clientWidth);        //网页可见区域宽(body)
+
+alert(document.body.clientHeight);       //网页可见区域高(body)
+
+alert(document.body.offsetWidth);       //网页可见区域宽(body)，包括border、margin等
+
+alert(document.body.offsetHeight);      //网页可见区域宽(body)，包括border、margin等
+
+alert(document.body.scrollWidth);        //网页正文全文宽，包括有滚动条时的未见区域
+
+alert(document.body.scrollHeight);       //网页正文全文高，包括有滚动条时的未见区域
+
+alert(document.body.scrollTop);           //网页被卷去的Top(滚动条)
+
+alert(document.body.scrollLeft);           //网页被卷去的Left(滚动条)
+
+alert(window.screenTop);                     //浏览器距离Top
+
+alert(window.screenLeft);                     //浏览器距离Left
+
+alert(window.screen.height);                //屏幕分辨率的高
+
+alert(window.screen.width);                 //屏幕分辨率的宽
+
+alert(window.screen.availHeight);          //屏幕可用工作区的高
+
+alert(window.screen.availWidth);           //屏幕可用工作区的宽
+
+
+
+vue之类的框架不支持手动操作dom，什么是手动操作dom？答：如jquery中$('$element')获取元素进行操作，这就是手动操作dom；所以在#app的data里的数据可以直接用双花括号包裹放入html中，相当于innerHtml（data里的数据）。
+
+为什么vue要var vm=new Vue({
+	因为引入vue的js框架之后，会在window上多一个vue的构造函数。
+})
+
+vue实例所控制的元素区（HTML代码）就是MVVM中的v；
+我们new出来的VM对象就是MVVM中的VM调度者；
+在new出来的对象里data就是MVVM中的m，专门用来保存页面中的数据
+
+在vue页面中，可以用id和class，用id就用#id，用class用.class
+
+v-cloak属性可以解决闪烁问题（当网速慢的时候会显示我们html代码中的数据名称如{{msg}}），需要设置这个属性：在style标签中【v-cloak】{dispaly：none}就解决上述问题
+
+
+{{msg}}插值表达式，v-text属性，这两个都可以将data中的数据传递到页面中，这两个区别：
+1：默认v-text属性没有闪烁问题；
+2：{{msg}}前后加的文本可以在页面中显示，如：++++{{msg}}---，加减号可以在前台页面上显示；但是v-text，只会显示v-text的值，替换html中原有的值，如：<p v-text='msg'>===----</p>等号和减号不会显示在页面中，只会显示data里的msg；
+
+v-html：如<p v-html='msg2'>===----</p>，它会把msg2当做html来解析，同样会替换掉p标签里原先所以的文本。
+
+v-bind是绑定属性，缩写：，如：属性title=‘data里的msg属性’这样写是获取不到的，需要这样写v-bind：title=‘msg'，v-text和v-html是个例外。
+
+v-on是绑定事件的，缩写@，@click=“change”，change是在VM实例中methods中定义的函数，methods是一个对象，change是函数名，不需要在methods中加function，可以直接写change（）{}就行。
+
+在VM实例中，想要获取data和methods中的数据和方法需要通过this.属性名和this.函数名
+
+VM实例会监听VM data里面所有数据的变化，只要data中数据发生改变，就会自动把最新数据同步到页面上去（好处：程序员只需要关心数据，不需要关心如何重新渲染dom页面。
+
+箭头函数内部this和外部this始终保持一至。

@@ -1,0 +1,22 @@
+.clearfix:after{
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+	content: "";
+}
+.clearfix{
+	*zoom: 1;
+}
+body{
+	font-family: '微软雅黑';
+}
+.content_center{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+a{
+	text-decoration: none;
+}
